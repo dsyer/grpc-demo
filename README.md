@@ -11,7 +11,7 @@ $ ./mvnw spring-boot:run
  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
   '  |____| .__|_| |_|_| |_\__, | / / / /
  =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::                (v3.0.0)
+ :: Spring Boot ::                (v3.5.3)
 
 2022-12-08T05:32:24.934-08:00  INFO 551632 --- [           main] com.example.demo.DemoApplication         : Starting DemoApplication using Java 17.0.5 with PID 551632 (/home/dsyer/dev/scratch/demo/target/classes started by dsyer in /home/dsyer/dev/scratch/demo)
 2022-12-08T05:32:24.938-08:00  INFO 551632 --- [           main] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
@@ -95,7 +95,7 @@ $ ./target/demo
  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
   '  |____| .__|_| |_|_| |_\__, | / / / /
  =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::                (v3.0.0)
+ :: Spring Boot ::                (v3.5.3)
 
 2022-12-08T05:36:54.365-08:00  INFO 554359 --- [           main] com.example.demo.DemoApplication         : Starting AOT-processed DemoApplication using Java 17.0.5 with PID 554359 (/home/dsyer/dev/scratch/demo/target/demo started by dsyer in /home/dsyer/dev/scratch/demo)
 2022-12-08T05:36:54.366-08:00  INFO 554359 --- [           main] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
@@ -106,5 +106,3 @@ $ ./target/demo
 2022-12-08T05:36:54.396-08:00  INFO 554359 --- [           main] n.d.b.g.s.s.GrpcServerLifecycle          : gRPC Server started, listening on address: *, port: 9090
 2022-12-08T05:36:54.396-08:00  INFO 554359 --- [           main] com.example.demo.DemoApplication         : Started DemoApplication in 0.046 seconds (process running for 0.052)
 ```
-
-The patches needed to make it work in native were a reflection hint (upstream change: https://github.com/oracle/graalvm-reachability-metadata/pull/148) and some autoconfig metadata (upstream change: https://github.com/yidongnan/grpc-spring-boot-starter/pull/775).

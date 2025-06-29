@@ -19,7 +19,7 @@ import com.example.demo.proto.HelloReply;
 import com.example.demo.proto.HelloRequest;
 import com.example.demo.proto.SimpleGrpc;
 
-@SpringBootTest(properties = "spring.grpc.client.channels.test.address=static://localhost:0")
+@SpringBootTest(properties = { "spring.grpc.server.port=0", "spring.grpc.client.default-channel.address=static://localhost:${local.grpc.port}" })
 public class DemoApplicationTests {
 
 	private static Log log = LogFactory.getLog(DemoApplicationTests.class);
@@ -42,17 +42,6 @@ public class DemoApplicationTests {
 		log.info("Testing");
 		HelloReply response = stub.sayHello(HelloRequest.newBuilder().setName("Alien").build());
 		assertEquals("Hello ==> Alien", response.getMessage());
-	}
-
-	@TestConfiguration
-	static class TestListener {
-
-		@Bean
-		@Lazy
-		SimpleGrpc.SimpleBlockingStub stub(GrpcChannelFactory channels, @LocalGrpcPort int port) {
-			return SimpleGrpc.newBlockingStub(channels.createChannel("0.0.0.0:" + port));
-		}
-
 	}
 
 }
