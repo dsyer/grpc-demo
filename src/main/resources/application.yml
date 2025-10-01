@@ -1,3 +1,18 @@
 spring:
   application:
     name: hello
+  grpc:
+    client:
+      default-channel:
+        service-config:
+          methodConfig:
+            - name:
+                - service: "com.dm4nk.gradlesandbox.user.proto.v1.UserService"
+                  method: "User"
+              retryPolicy:
+                maxAttempts: "5"
+                initialBackoff: "0.5s"
+                maxBackoff: "1s"
+                backoffMultiplier: "2"
+                retryableStatusCodes: [ "UNAVAILABLE","UNKNOWN" ]
+
