@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.5</version>
+		<version>4.0.0-RC1</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
@@ -24,7 +24,7 @@
 			<dependency>
 				<groupId>org.springframework.grpc</groupId>
 				<artifactId>spring-grpc-dependencies</artifactId>
-				<version>0.12.0-SNAPSHOT</version>
+				<version>1.0.0-SNAPSHOT</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -52,7 +52,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.grpc</groupId>
-			<artifactId>spring-grpc-test</artifactId>
+			<artifactId>spring-grpc-test-spring-boot-autoconfigure</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
