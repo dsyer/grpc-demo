@@ -8,13 +8,16 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.grpc.client.ImportGrpcClients;
 import org.springframework.test.annotation.DirtiesContext;
 
 import com.example.demo.proto.HelloReply;
 import com.example.demo.proto.HelloRequest;
 import com.example.demo.proto.SimpleGrpc;
 
-@SpringBootTest(properties = { "spring.grpc.server.port=0", "spring.grpc.client.default-channel.address=static://localhost:${local.grpc.port}" })
+@SpringBootTest(properties = { "spring.grpc.server.port=0",
+		"spring.grpc.client.channel.default.target=localhost:${local.grpc.server.port}" })
 public class DemoApplicationTests {
 
 	private static Log log = LogFactory.getLog(DemoApplicationTests.class);
@@ -37,6 +40,11 @@ public class DemoApplicationTests {
 		log.info("Testing");
 		HelloReply response = stub.sayHello(HelloRequest.newBuilder().setName("Alien").build());
 		assertEquals("Hello ==> Alien", response.getMessage());
+	}
+
+	@TestConfiguration
+	@ImportGrpcClients(types = SimpleGrpc.SimpleBlockingStub.class)
+	static class ExtraConfiguration {
 	}
 
 }
